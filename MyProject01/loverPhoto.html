@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>照片轮播</title>
+    <style>
+        #left li a{
+            display: block;
+            width: 70px;
+            height: 27px;
+            text-align: center;
+            color: cadetblue;
+            text-decoration: none;
+        }
+        #left li a:hover{
+            color: red;
+        }
+        #center {
+            border-left: 1px solid pink;
+        }
+        .p{
+            width: 70px;
+        }
+    </style>
+    <script>
+        $(function () {
+            //给左边的li标签们设置鼠标移入事件，让中间索引对应的li显示，其他的li隐藏
+            $('#left>li').mouseenter(function () {
+                //获取当前鼠标移入的这个li标签的索引
+                var idx = $(this).index();
+                //让中间索引对应的li显示，其他的li隐藏
+                $('#center>li').eq(idx).show().siblings('li').hide();
+            });
+        });
+        $(function () {
+            $('#div1>#center>li').hide();
+        });
+        $(function () {
+            //给按钮们添加事件：设置body的背景色
+            //获取到按钮
+            var btns = document.getElementsByTagName("button");
+            //给关灯按钮设置点击事件
+            btns[1].onclick = function () {
+                $('body').css('backgroundColor','black');
+            }
+            //给开灯按钮设置一个点击事件
+            $(btns[0]).click(function () {
+                $('body')[0].style.backgroundColor = 'white';
+            });
+        });
+    </script>
+    <script src="bs/js/jquery-3.4.1.js"></script>
+</head>
+<body style="background-color: pink">
+    <button style="background-color: pink">开灯</button>
+    <button style="background-color: pink">关灯</button>
+    <br>
+    <div>
+        <ul id="left">
+            <li class="p"><a href="#" >小母猪01</a></li>
+            <li class="p"><a href="#" >小母猪02</a></li>
+            <li class="p"><a href="#" >小母猪03</a></li>
+            <li class="p"><a href="#" >小母猪04</a></li>
+            <li class="p"><a href="#" >小母猪05</a></li>
+            <li class="p"><a href="#" >小母猪06</a></li>
+            <li class="p"><a href="#" >小母猪07</a></li>
+        </ul>
+    </div>
+    <center><div id="div1">
+        <ul id="center">
+            <li><a href="#"><img src="photo/pig01.jpg" width="300" height="380" /></a></li>
+            <li><a href="#"><img src="photo/pig02.jpg" width="600" height="450" /></a></li>
+            <li><a href="#"><img src="photo/pig03.jpg" width="500" height="400" /></a></li>
+            <li><a href="#"><img src="photo/pig04.jpg" width="300" height="400" /></a></li>
+            <li><a href="#"><img src="photo/pig05.jpg" width="350" height="400" /></a></li>
+            <li><a href="#"><img src="photo/pig06.jpg" width="500" height="400" /></a></li>
+            <li><a href="#"><img src="photo/pig07.jpg" width="350" height="400" /></a></li>
+        </ul>
+    </div></center>
+</body>
+</html>
