@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人空间</title>
+    <script type="text/javascript">
+        var count = 2;
+        function addItem() {
+            //创建tr对象
+            var tr = document.createElement("tr");
+            //创建三个td对象
+            var td1 = document.createElement("td");
+            td1.innerHTML = count;
+            var td2 = document.createElement("td");
+            var input1 = document.createElement("input");
+            input1.setAttribute("type","text");input1.setAttribute("size","55px");
+
+            //把input放入td中
+            td2.appendChild(input1);
+            var td3 = document.createElement("td");
+            var input2 = document.createElement("input");
+            input2.setAttribute("type","text");
+            input2.setAttribute("size","55px");
+            //把input放入td中
+            td3.appendChild(input2);
+            //把三个td放入tr中
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            tr.appendChild(td3);
+            //把tr放在tbody的子节点中
+            var tbody = document.getElementsByTagName("tbody")[0];
+            tbody.appendChild(tr);
+            count++;
+        }
+        function delItem() {
+            if (count > 2) {
+                //查找需要删除的节点
+                var tbody = document.getElementsByTagName("tbody")[0];
+                var lastChild = tbody.lastChild;
+                tbody.removeChild(lastChild);
+                count--;
+            }
+        }
+        function save() {
+            alert("嘿嘿嘿，已保存到私密空间")
+        }
+    </script>
+    <style>
+        #div1{
+            position: absolute;
+            left: 0px;
+        }
+    </style>
+    <script src="bs/js/jquery-3.4.1.js"></script>
+</head>
+<body bgcolor="white">
+    <h1>
+        <center><font color="#ffc0cb">【和小母猪的情侣空间】</font></center>
+    </h1>
+
+        <center><font color="#6495ed"><strong>添加和删除恋爱故事</strong></font></center>
+        <table border="0" align="center" width="800px">
+            <thead>
+            <tr>
+                <th>编号</th><th>事件描述</th><th>发生日期</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td><input type="text" size="55px"/></td>
+                <td><input type="text" size="55px"/></td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="3">
+                   <center><input type="button" value="添加" onclick="addItem()"/><input type="button" value="删除" onclick="delItem()"/><input type="button" value="保存" onclick="save()"/></center>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    <input type="button" value="发射~" id="move" style="background-color: pink"/>
+    <br>
+    <div id="div1"><img src="photo/aixin.png"></div>
+</body>
+</html>
+<script>
+    $(function () {
+        //定义动画animate()；
+        $('#move').click(function () {
+            //让id为div1的元素动画移动到1250那个位置
+            $('#div1').animate({
+                left:1230
+            },4000,'swing',function () {
+                $('#div1').animate({
+                    left:0,
+                    top:500
+                    },4000,'swing',function () {
+                    $('#div1').animate({
+                            left:1230,
+                            top:100
+                        },4000,'swing',function () {
+                        $('#div1').animate({
+                                left:0,
+                                top:0
+                            },4000,'swing',function () {
+                            $('#div1').animate({
+                                    left:1230,
+                                    top:200
+                                },4000,'swing',function () {
+                                $('#div1').animate({
+                                        left:0,
+                                        top:500
+                                    },4000,'swing',function () {
+                                    $('#div1').fadeOut(2000);
+                                    }
+                                )
+                                }
+                            )
+                            }
+                        )
+                        }
+                    )
+                    }
+                )
+            });
+        });
+    });
+</script>
